@@ -1,0 +1,39 @@
+{
+  "name": "is-ignored",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Jakub Biesiada",
+  "license": "MIT",
+  "main": "bin/index.js",
+  "scripts": {
+    "build": "rimraf bin/* && tsc -p .",
+    "prettier": "prettier --write 'src/**/*.ts'"
+  },
+  "repository": "https://github.com/JB1905/is-ignored.git",
+  "engines": {
+    "node": ">=10"
+  },
+  "bin": "bin/index.js",
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.2",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.7.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "npm run prettier",
+      "git add"
+    ]
+  }
+}
