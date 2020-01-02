@@ -15,6 +15,10 @@ program
   .command('is-ignored <file> [dir]')
   .alias('ii')
   .description('')
+  .option('-d --show-default-ignored', '')
+  .option('-g --show-default-not-ignored', '')
+  .option('-s --should-be-ignored', '')
+  .option('-x --should-not-be-ignored', '')
   .option('-i --show-igonred', '')
   .option('-n --show-not-igonred', '')
   .option('-m --list-node-modules', '')
@@ -32,10 +36,10 @@ program
 
       file = cmd[0];
     } else {
-      if (!fs.existsSync(patterns[cmd[0]])) {
+      if (!fs.existsSync(patterns[cmd[0]].file)) {
         return console.log(`Config file for ${cmd[0]} not found`);
       } else {
-        file = patterns[cmd[0]];
+        file = patterns[cmd[0]].file;
       }
     }
 
