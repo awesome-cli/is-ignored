@@ -12,7 +12,8 @@
     ".wafpickle-*",
     "config.gypi",
     "CVS",
-    "npm-debug.log"
+    "npm-debug.log",
+    "node_modules"
   ],
   "defaultNotIgnore": [
     "package.json",

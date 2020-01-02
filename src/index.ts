@@ -58,17 +58,19 @@ program
       .split('\n')
       .filter(line => line !== '' && line !== '#');
 
-    dir.map(file => {
-      if (lines.includes(file)) {
-        if (showIgnored || showIgnored === undefined) {
-          console.log(chalk.red(file));
+    dir
+      .filter(file => !patterns[cmd[0]].defaultIgnore?.includes(file))
+      .map(file => {
+        if (lines.includes(file)) {
+          if (showIgnored || showIgnored === undefined) {
+            console.log(chalk.red(file));
+          }
+        } else {
+          if (!showIgnored || showIgnored === undefined) {
+            console.log(chalk.green(file));
+          }
         }
-      } else {
-        if (!showIgnored || showIgnored === undefined) {
-          console.log(chalk.green(file));
-        }
-      }
-    });
+      });
   });
 
 program.on('command:*', () => {

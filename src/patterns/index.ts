@@ -3,8 +3,8 @@ import npm from './npm.json';
 
 interface Pattern {
   file: string;
-  defaultIgnored?: string[];
-  defaultNotIgnored?: string[];
+  defaultIgnore?: string[];
+  defaultNotIgnore?: string[];
 }
 
 interface Schema {
