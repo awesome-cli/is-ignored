@@ -18,7 +18,7 @@ program
   .option('-i --show-igonred', '')
   .option('-n --show-not-igonred', '')
   .option('-m --list-node-modules', '')
-  .action(async (...cmd: string[]) => {
+  .action((...cmd: string[]) => {
     let file: string;
 
     if (!Object.keys(patterns).includes(cmd[0])) {
