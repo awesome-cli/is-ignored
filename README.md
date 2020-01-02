@@ -1,6 +1,7 @@
 # Is ignored
 
 ## About
+Check which files and directories in project are ignored for different platforms
 
 ## Commands
 
