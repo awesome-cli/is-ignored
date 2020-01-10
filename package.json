@@ -1,7 +1,7 @@
 {
   "name": "is-ignored",
   "version": "1.0.0",
-  "description": "",
+  "description": "Check which files and directories in project are ignored for different platforms",
   "author": "Jakub Biesiada",
   "license": "MIT",
   "main": "bin/index.js",
@@ -19,8 +19,8 @@
     "commander": "^4.1.0"
   },
   "devDependencies": {
-    "@types/node": "^13.1.4",
-    "husky": "^4.0.1",
+    "@types/node": "^13.1.6",
+    "husky": "^4.0.6",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "typescript": "^3.7.4"
