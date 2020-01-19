@@ -42,7 +42,7 @@
     "@types/figlet": "^1.2.0",
     "@types/node": "^13.1.8",
     "husky": "^4.0.10",
-    "lint-staged": "^9.5.0",
+    "lint-staged": "^10.0.0",
     "prettier": "^1.19.1",
     "typescript": "^3.7.5"
   },
@@ -53,8 +53,7 @@
   },
   "lint-staged": {
     "lib/**/*.ts": [
-      "npm run prettier",
-      "git add"
+      "npm run prettier"
     ]
   }
 }
