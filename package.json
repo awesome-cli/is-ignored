@@ -7,23 +7,44 @@
   "main": "bin/index.js",
   "scripts": {
     "build": "rimraf bin/* && tsc -p .",
-    "prettier": "prettier --write 'src/**/*.ts'"
+    "prettier": "prettier --write 'lib/**/*.ts'"
   },
-  "repository": "https://github.com/JB1905/is-ignored.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JB1905/is-ignored.git"
+  },
   "engines": {
     "node": ">=10"
   },
-  "bin": "bin/index.js",
+  "keywords": [
+    "npm",
+    "ignore-list",
+    "git",
+    "check",
+    "node-modules",
+    "exclude",
+    "package"
+  ],
+  "bugs": {
+    "url": "https://github.com/JB1905/is-ignored/issues"
+  },
+  "homepage": "https://github.com/JB1905/is-ignored#readme",
+  "bin": {
+    "is-ignored": "bin/index.js",
+    "ii": "bin/index.js"
+  },
   "dependencies": {
     "chalk": "^3.0.0",
-    "commander": "^4.1.0"
+    "commander": "^4.1.0",
+    "figlet": "^1.2.4"
   },
   "devDependencies": {
-    "@types/node": "^13.1.6",
-    "husky": "^4.0.6",
+    "@types/figlet": "^1.2.0",
+    "@types/node": "^13.1.8",
+    "husky": "^4.0.10",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   },
   "husky": {
     "hooks": {
@@ -31,7 +52,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.ts": [
+    "lib/**/*.ts": [
       "npm run prettier",
       "git add"
     ]

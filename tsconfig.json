@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "lib": ["es6", "es2015", "dom"],
     "outDir": "bin",
-    "rootDir": "src",
+    "rootDir": "lib",
     "strict": true,
-    "types": ["node"],
     "esModuleInterop": true,
     "resolveJsonModule": true
   }
