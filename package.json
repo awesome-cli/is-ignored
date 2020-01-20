@@ -35,10 +35,12 @@
   },
   "dependencies": {
     "chalk": "^3.0.0",
+    "columnify": "^1.5.4",
     "commander": "^4.1.0",
     "figlet": "^1.2.4"
   },
   "devDependencies": {
+    "@types/columnify": "^1.5.0",
     "@types/figlet": "^1.2.0",
     "@types/node": "^13.1.8",
     "husky": "^4.0.10",
