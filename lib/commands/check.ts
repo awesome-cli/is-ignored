@@ -4,8 +4,21 @@ import fs from 'fs';
 
 import { patterns } from '../patterns';
 
-const check = (config: string, dir: string) => {
+const check = (config: string, dir: string, cmd: any) => {
   let file: string;
+
+  const {
+    showIgnored,
+    showNotIgnored,
+    shouldNotBeIgnored,
+    shouldBeIgnored,
+    showDefaultNotIgnored,
+    showDefaultIgnored,
+  } = cmd[0];
+
+  // console.log(cmd[0]);
+
+  // console.log(showDefaultIgnored, cmd);
 
   if (!Object.keys(patterns).includes(config)) {
     if (!fs.existsSync(config)) {
@@ -30,8 +43,6 @@ const check = (config: string, dir: string) => {
   } else if (!fs.existsSync(dir)) {
     return console.log(`Directory ${dir} not exists`);
   }
-
-  const showIgnored = undefined;
 
   const lines = fs
     .readFileSync(file, 'utf-8')
@@ -61,6 +72,6 @@ program
   .option('-g, --show-default-not-ignored', '')
   .option('-s, --should-be-ignored', '')
   .option('-x, --should-not-be-ignored', '')
-  .option('-i, --show-igonred', '')
-  .option('-n, --show-not-igonred', '')
-  .action((config, dir) => check(config, dir));
+  .option('-i, --show-ignored', '')
+  .option('-n, --show-not-ignored', '')
+  .action((config, dir, ...rest) => check(config, dir, rest));
