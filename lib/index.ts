@@ -13,7 +13,7 @@ const pkg = require(path.join(__dirname, '../package.json'));
 
 program
   .version(pkg.version)
-  .description('')
+  .description('Check which files and directories in project are ignored')
   .usage('<cmd> [options]');
 
 program.on('command:*', (commands?: string[]) => {
