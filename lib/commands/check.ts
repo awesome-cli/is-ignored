@@ -1,4 +1,5 @@
 import program from 'commander';
+// import columnify from 'columnify';
 import chalk from 'chalk';
 import fs from 'fs';
 
@@ -6,6 +7,8 @@ import { patterns } from '../patterns';
 
 const check = (config: string, dir: string, cmd: any) => {
   let file: string;
+  let defaultIgnore: any;
+  let defaultNotIgnore: any;
 
   const {
     showIgnored,
@@ -15,10 +18,6 @@ const check = (config: string, dir: string, cmd: any) => {
     showDefaultNotIgnored,
     showDefaultIgnored,
   } = cmd[0];
-
-  // console.log(cmd[0]);
-
-  // console.log(showDefaultIgnored, cmd);
 
   if (!Object.keys(patterns).includes(config)) {
     if (!fs.existsSync(config)) {
@@ -35,6 +34,8 @@ const check = (config: string, dir: string, cmd: any) => {
       return console.log(`Config file for ${config} not found`);
     } else {
       file = patterns[config].file;
+      defaultIgnore = patterns[config].defaultIgnore;
+      defaultNotIgnore = patterns[config].defaultNotIgnore;
     }
   }
 
@@ -53,12 +54,36 @@ const check = (config: string, dir: string, cmd: any) => {
     .filter(file => !patterns[config]?.defaultIgnore?.includes(file))
     .map(file => {
       if (lines.includes(file)) {
-        if (showIgnored || showIgnored === undefined) {
-          console.log(chalk.red(file));
+        if (
+          showIgnored ||
+          (showIgnored === undefined && showNotIgnored === undefined) ||
+          !showNotIgnored
+        ) {
+          if (shouldNotBeIgnored) {
+            console.log(
+              `${chalk.red(file)} ${chalk.cyanBright(
+                '===> this file should not be ignored'
+              )}`
+            );
+          } else {
+            console.log(chalk.red(file));
+          }
         }
       } else {
-        if (!showIgnored || showIgnored === undefined) {
-          console.log(chalk.green(file));
+        if (
+          !showIgnored ||
+          (showIgnored === undefined && showNotIgnored === undefined) ||
+          showNotIgnored
+        ) {
+          if (shouldBeIgnored) {
+            console.log(
+              `${chalk.green(file)} ${chalk.magentaBright(
+                '===> this file should be ignored'
+              )}`
+            );
+          } else {
+            console.log(chalk.green(file));
+          }
         }
       }
     });
@@ -74,4 +99,4 @@ program
   .option('-x, --should-not-be-ignored', '')
   .option('-i, --show-ignored', '')
   .option('-n, --show-not-ignored', '')
-  .action((config, dir, ...rest) => check(config, dir, rest));
+  .action((config, dir, ...cmd) => check(config, dir, cmd));
