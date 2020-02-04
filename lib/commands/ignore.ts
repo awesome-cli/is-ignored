@@ -1,8 +1,17 @@
 import program from 'commander';
 import fs from 'fs';
 
+import { patterns } from '../patterns';
+
 const ignore = (configFile: string) => {
-  const config = fs.readFileSync(configFile, 'utf-8');
+  const config = fs.readFileSync(
+    patterns?.[configFile]?.file || configFile,
+    'utf-8'
+  );
+
+  if (!config) {
+    return console.log(`${config} not found`);
+  }
 
   process.argv.slice(4).map(file => {
     if (!config.includes(file)) {
