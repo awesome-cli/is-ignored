@@ -36,15 +36,15 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "columnify": "^1.5.4",
-    "commander": "^4.1.0",
+    "commander": "^4.1.1",
     "figlet": "^1.2.4"
   },
   "devDependencies": {
     "@types/columnify": "^1.5.0",
     "@types/figlet": "^1.2.0",
-    "@types/node": "^13.1.8",
-    "husky": "^4.2.0",
-    "lint-staged": "^10.0.2",
+    "@types/node": "^13.7.0",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
     "typescript": "^3.7.5"
   },
