@@ -8,29 +8,39 @@ program
   .command('check <config> <dir>')
   .description('display ignored & not ignored files')
   .alias('ch')
-  .action((config, dir) => {
+  .action((config: string, dir: string) => {
     let file: string;
 
     if (!Object.keys(patterns).includes(config)) {
       if (!fs.existsSync(config)) {
-        return console.log(`File ${config} not exists`);
+        console.log(`File ${config} not exists`);
+
+        process.exit(1);
       }
 
       if (config.indexOf('ignore') === -1) {
-        return console.log(`${config} is not an ignore file`);
+        console.log(`${config} is not an ignore file`);
+
+        process.exit(1);
       }
 
       file = config;
     } else if (!fs.existsSync(patterns[config].file)) {
-      return console.log(`Config file for ${config} not found`);
+      console.log(`Config file for ${config} not found`);
+
+      process.exit(1);
     } else {
       file = patterns[config].file;
     }
 
     if (dir === undefined) {
-      return console.log('Directory is not specified');
+      console.log('Directory is not specified');
+
+      process.exit(1);
     } else if (!fs.existsSync(dir)) {
-      return console.log(`Directory ${dir} not exists`);
+      console.log(`Directory ${dir} not exists`);
+
+      process.exit(1);
     }
 
     const lines = fs
