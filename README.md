@@ -6,6 +6,12 @@
 ## About
 Check which files and directories in project are ignored for different platforms
 
+## How to Install
+First, install the CLI by npm:
+```bash
+$ npm install -g is-ignored
+```
+
 ## Commands
 #### Display ignored & not ignored files
 ```bash
