@@ -7,6 +7,22 @@
 Check which files and directories in project are ignored for different platforms
 
 ## Commands
+#### Display ignored & not ignored files
+```bash
+$ is-ignored check <config> <dir>
+```
+
+#### Ignore files and directories in config
+```bash
+$ is-ignored ignore <config> <files>
+```
+
+#### Unignore files and directories in config
+```bash
+$ is-ignored unignore <config> <files>
+```
+
+**Instead of `is-ignored` you can use alias: `ii`**
 
 ## License
 This project is licensed under the MIT License © 2020-present Jakub Biesiada

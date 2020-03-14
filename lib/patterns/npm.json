@@ -1,25 +1,3 @@
 {
-  "file": ".npmignore",
-  "defaultIgnore": [
-    ".*.swp",
-    "._*",
-    ".DS_Store",
-    ".git",
-    ".hg",
-    ".npmrc",
-    ".lock-wscript",
-    ".svn",
-    ".wafpickle-*",
-    "config.gypi",
-    "CVS",
-    "npm-debug.log",
-    "node_modules"
-  ],
-  "defaultNotIgnore": [
-    "package.json",
-    "README",
-    "CHANGELOG",
-    "LICENSE",
-    "LICENCE"
-  ]
+  "file": ".npmignore"
 }
