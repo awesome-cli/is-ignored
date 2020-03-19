@@ -19,7 +19,7 @@ program
       if (!config.includes(file)) {
         fs.appendFileSync(
           configFile,
-          `${config[config.length - 1] === '\n' ? '' : '\n'}${file}`
+          `${config[config.length - 1] === '\n' ? '' : '\n'}${file}\n`
         );
       } else {
         console.log(`${file} is already ignored`);

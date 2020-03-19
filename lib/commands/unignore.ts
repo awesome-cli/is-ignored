@@ -11,22 +11,20 @@ program
   .action((configFile: string) => {
     configFile = getConfigFile(configFile);
 
-    const config = getFileContent(configFile);
+    let config = getFileContent(configFile);
 
     const files = process.argv.slice(4);
 
     files.map(file => {
       if (config.includes(file)) {
-        fs.writeFileSync(
-          configFile,
-          config
-            .split('\n')
-            .filter(line => line !== file)
-            .join('\n'),
-          'utf-8'
-        );
+        config = config
+          .split('\n')
+          .filter(line => line !== file)
+          .join('\n');
       } else {
         console.log(`${file} is not ignored`);
       }
     });
+
+    fs.writeFileSync(configFile, config, 'utf-8');
   });
