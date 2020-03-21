@@ -15,11 +15,11 @@ program
 
     const files = process.argv.slice(4);
 
-    files.map(file => {
+    files.map((file) => {
       if (config.includes(file)) {
         config = config
           .split('\n')
-          .filter(line => line !== file)
+          .filter((line) => line !== file)
           .join('\n');
       } else {
         console.log(`${file} is not ignored`);

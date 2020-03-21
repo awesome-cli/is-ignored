@@ -11,10 +11,7 @@ import './commands/unignore';
 
 const pkg = require(path.join(__dirname, '../package.json'));
 
-program
-  .version(pkg.version)
-  .description(pkg.description)
-  .usage('<cmd>');
+program.version(pkg.version).description(pkg.description).usage('<cmd>');
 
 program.on('--help', () => {
   console.log(

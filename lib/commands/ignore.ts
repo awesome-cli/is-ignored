@@ -15,7 +15,7 @@ program
 
     const files = process.argv.slice(4);
 
-    files.map(file => {
+    files.map((file) => {
       if (!config.includes(file)) {
         fs.appendFileSync(
           configFile,

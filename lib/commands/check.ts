@@ -46,9 +46,9 @@ program
     const lines = fs
       .readFileSync(file, 'utf-8')
       .split('\n')
-      .filter(line => line !== '' && line !== '#');
+      .filter((line) => line !== '' && line !== '#');
 
-    fs.readdirSync(dir).map(file => {
+    fs.readdirSync(dir).map((file) => {
       if (lines.includes(file)) {
         console.log(chalk.red(file));
       } else {
