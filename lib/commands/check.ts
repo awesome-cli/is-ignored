@@ -11,6 +11,9 @@ program
   .action((config: string, dir: string) => {
     let file: string;
 
+    let alwaysIgnored: string[] = [];
+    let neverIgnored: string[] = [];
+
     if (!Object.keys(patterns).includes(config)) {
       if (!fs.existsSync(config)) {
         console.log(`File ${config} not exists`);
@@ -28,9 +31,15 @@ program
     } else if (!fs.existsSync(patterns[config].file)) {
       console.log(`Config file for ${config} not found`);
 
+      console.log('acc');
+
       process.exit(1);
     } else {
+      console.log('ddd');
+
       file = patterns[config].file;
+      alwaysIgnored = patterns[config].alwaysIgnored;
+      neverIgnored = patterns[config].neverIgnored;
     }
 
     if (dir === undefined) {
@@ -49,10 +58,18 @@ program
       .filter((line) => line !== '' && line !== '#');
 
     fs.readdirSync(dir).map((file) => {
-      if (lines.includes(file)) {
-        console.log(chalk.red(file));
-      } else {
-        console.log(chalk.green(file));
+      if (alwaysIgnored.includes(file)) {
+        console.log(chalk.strikethrough.gray(file));
       }
+
+      if (neverIgnored.includes(file)) {
+        console.log(chalk.underline(file));
+      }
+
+      // if (lines.includes(file)) {
+      //   console.log(chalk.red(file));
+      // } else {
+      //   console.log(chalk.green(file));
+      // }
     });
   });
