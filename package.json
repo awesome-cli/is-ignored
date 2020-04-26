@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JB1905/is-ignored.git"
+    "url": "https://github.com/awesome-cli/is-ignored.git"
   },
   "engines": {
     "node": ">=10"
@@ -26,24 +26,24 @@
     "package"
   ],
   "bugs": {
-    "url": "https://github.com/JB1905/is-ignored/issues"
+    "url": "https://github.com/awesome-cli/is-ignored/issues"
   },
-  "homepage": "https://github.com/JB1905/is-ignored#readme",
+  "homepage": "https://github.com/awesome-cli/is-ignored#readme",
   "bin": {
     "is-ignored": "bin/index.js",
     "ii": "bin/index.js"
   },
   "dependencies": {
     "chalk": "^4.0.0",
-    "commander": "^5.0.0",
+    "commander": "^5.1.0",
     "figlet": "^1.3.0"
   },
   "devDependencies": {
     "@types/figlet": "^1.2.0",
-    "@types/node": "^13.11.1",
+    "@types/node": "^13.13.2",
     "husky": "^4.2.5",
-    "lint-staged": "^10.1.3",
-    "prettier": "^2.0.4",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5",
     "typescript": "^3.8.3"
   },
   "husky": {

@@ -1,4 +1,4 @@
-# [Is ignored](https://github.com/jb1905/is-ignored)
+# [Is ignored](https://github.com/awesome-cli/is-ignored)
 
 [![NPM version](http://img.shields.io/npm/v/is-ignored.svg?style=flat-square)](https://www.npmjs.com/package/is-ignored)
 [![NPM downloads](http://img.shields.io/npm/dm/is-ignored.svg?style=flat-square)](https://www.npmjs.com/package/is-ignored)
