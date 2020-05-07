@@ -7,11 +7,7 @@ interface Pattern {
   neverIgnored: string[];
 }
 
-interface Schema {
-  [key: string]: Pattern;
-}
-
-export const patterns: Schema & any = {
+export const patterns: Record<string, Pattern> = {
   git,
   npm,
 };
