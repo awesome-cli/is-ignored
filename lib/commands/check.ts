@@ -11,7 +11,10 @@ program
   .action((config: string, dir: string) => {
     let file: string;
 
-    if (!Object.keys(patterns).includes(config)) {
+    let alwaysIgnored: string[] = [];
+    let neverIgnored: string[] = [];
+
+    if (!(config in patterns)) {
       if (!fs.existsSync(config)) {
         console.log(`File ${config} not exists`);
 
@@ -31,6 +34,8 @@ program
       process.exit(1);
     } else {
       file = patterns[config].file;
+      alwaysIgnored = patterns[config].alwaysIgnored;
+      neverIgnored = patterns[config].neverIgnored;
     }
 
     if (dir === undefined) {
@@ -48,11 +53,19 @@ program
       .split('\n')
       .filter((line) => line !== '' && line !== '#');
 
-    fs.readdirSync(dir).map((file) => {
-      if (lines.includes(file)) {
-        console.log(chalk.red(file));
-      } else {
-        console.log(chalk.green(file));
+    const formatOutput = (file: string) => {
+      let styles = file;
+
+      if (alwaysIgnored.includes(file)) {
+        styles = chalk.strikethrough.gray(styles);
+      } else if (neverIgnored.includes(file)) {
+        styles = chalk.underline(styles);
       }
+
+      return chalk[lines.includes(file) ? 'red' : 'green'](styles);
+    };
+
+    fs.readdirSync(dir).map((file) => {
+      console.log(formatOutput(file));
     });
   });
